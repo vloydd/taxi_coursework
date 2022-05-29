@@ -1,0 +1,8 @@
+name: Taxi
+description: This module let's you book a taxi.
+type: module
+core_version_requirement: ^9.0
+package: Custom
+libraries: taxi/taxi
+dependencies:
+  - drupal:smtp

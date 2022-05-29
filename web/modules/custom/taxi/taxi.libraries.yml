@@ -1,0 +1,30 @@
+taxi_library:
+  css:
+    base:
+      css/style.css: { }
+  js:
+    js/geo.js: { }
+    https://maps.googleapis.com/maps/api/js?key=AIzaSyAOySGKcoyuC-c0y-_8LL3j6CBMRfJ-zQk&callback=initMap&v=weekly: { type: external, attributes: { async: true, defer: true } }
+  dependencies:
+    - core/jquery
+    - core/once
+
+taxi:
+  dependencies:
+    - core/jquery
+    - core/ajax
+    - core/navigator
+    - core/google
+
+#taxi_timer:
+#  js:
+#    js/jquery.toast.js: { }
+#    js/countdown.jquery.min.js: { }
+#    js/app.js: { }
+#  css:
+#    base:
+#      css/jquery.toast.css: { }
+#      css/countdown.jquery.css: { }
+#  dependencies:
+#    - core/jquery
+#    - core/js-cookie

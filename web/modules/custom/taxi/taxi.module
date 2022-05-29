@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Install, Update, and Another Functions for the Taxi Module.
+ */
+
+use Drupal\Core\Mail\MailFormatHelper;
+
+/**
+ * Implements hook_mail().
+ * Sends Emails.
+ */
+function taxi_mail($key, &$message, $test) {
+  // Looking Through Keys.
+  switch ($key) {
+    // When We Requested Taxi, Message to Clients.
+    case 'ordered':
+      // Message Body.
+      $body =
+        "Dear " . $test['name'] . ",
+
+        You Just Ordered " . $test['tariff'] . " Taxi " . $test['road'] . " Our Airport.
+        Your Taxi Will Wait You at  " . date('d.m.y H:i:s', $test['time']) . "
+        Your Requested " . $test['cars'] . " Car(-s).
+        There Will Be Free Space for: " . $test['adults'] . " Adult(s) and " . $test['children'] . " Child(ren).
+        Your Location: Latitude:" . $test['latitude'] . ", Longitude: " . $test['longitude'] . ".
+        You Left Our Driver this Message:
+        " . $test['notes'] . ".
+        See Ya! Remember, Our Company will NEVER GONNA GIVE YOU UP!
+          PS: With Love, Bahrain Airport Taxi Service";
+      // Message Subject.
+      $message['subject'] = "Taxi Request";
+      // Sets Html Markup.
+      $message['body'][] = MailFormatHelper::htmlToText($body);
+      break;
+      // Message to Taxis.
+    case 'job':
+      // Message Body.
+      $body =
+        "Dear " . $test['taxis'] . ",
+        You Just Received a New Task That You Need to Perform.
+        Number of Сars is ". $test['cars'] . "
+        Client Want to Move ". $test['road'] . " Our Airport, Using " . $test['tariff'] . " Tariff.
+        You Need to be Here(Latitude: ". $test['latitude'] . ", Longitude: " . $test['longitude'] . " ) at " . date('d.m.y H:i:s', $test['time']) . "
+        Message from Client:
+        " . $test['notes'] . ".
+        At All, We Need Free Space for: " . $test['adults'] . " Adult(s) and " . $test['children'] . " Child(ren).
+        Good Luck with That!
+        Other Request You Can Find  at 'http://" . $_SERVER['HTTP_HOST'] ."/admin/structure/taxi':
+          PS: With Love, Dispatch of the Bahrain Airport Taxi Service";
+      // Message Subject.
+      $message['subject'] = "Taxi Task";
+      // Sets Html Markup.
+      $message['body'][] = MailFormatHelper::htmlToText($body);
+      break;
+  }
+}

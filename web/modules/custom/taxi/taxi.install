@@ -1,0 +1,106 @@
+<?php
+
+/**
+ * @file
+ * Our Installation and Uninstallation Hooks.
+ */
+
+/**
+ * Implements hook_schema().
+ */
+function taxi_schema(): array {
+  // Creates Table in DB for Taxi Requests.
+  $schema['taxi'] = [
+    'description' => 'Table of Taxi Requests',
+    'fields' => [
+      'id' => [
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+      // Name.
+      'name' => [
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+      ],
+      // Email.
+      'email' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      // Requested Time in Timestamp.
+      'time' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+      // Amount of Cars.
+      'car' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      // Amount of Adults.
+      'adults' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+      ],
+      // Amount of Children.
+      'children' => [
+        'type' => 'int',
+        'null' => TRUE,
+        'default' => 0,
+      ],
+      // Road To/From.
+      'road' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      // Tariff.
+      'tariff' => [
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ],
+      // Special Notes.
+      'notes' => [
+        'type' => 'varchar',
+        'length' => 1023,
+        'null' => TRUE,
+      ],
+      // Latitude of Client.
+      'latitude' => [
+        'type' => 'varchar',
+        'length' => 15,
+        'null' => TRUE,
+      ],
+      // Longitude of Client.
+      'longitude' => [
+        'type' => 'varchar',
+        'length' => 15,
+        'null' => TRUE,
+      ],
+      // Submitting Time.
+      'timestamp' => [
+        'type' => 'int',
+        'not null' => TRUE,
+      ],
+    ],
+    // Primary Key is ID.
+    'primary key' => [
+      'id',
+    ],
+  ];
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function taxi_uninstall() {
+  // Deletes Table from DB.
+  \Drupal::state()->delete('taxi.taxi');
+}

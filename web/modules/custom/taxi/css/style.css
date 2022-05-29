@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&display=swap'); .taxi-form {
+  padding-bottom: 30px;
+  font-family: 'Abel', sans-serif;
+}
+.taxi-form  label,
+.taxi-form  summary {
+  font-size: 16px;
+  line-height: 1.63;
+  color: #c9c9c9;
+  font-weight: bold;
+}
+.taxi-form .form-control,
+input {
+  height: 50px;
+  letter-spacing: 1px;
+  border-radius: 25px;
+  -moz-border-radius: 25px;
+  -ms-border-radius: 25px;
+  -o-border-radius: 25px;
+  -webkit-border-radius: 25px;
+  padding: 12px 26px 12px 26px;
+  border-color: #d8d8d8;
+  color: #3b3b3b;
+  font-size: 16px;
+  background: #ffffff;
+}
+.taxi-form .taxi-time {
+  padding: 8px;
+  color: #000000;
+}
+.taxi-form .map-container {
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+.taxi-form #map {
+  height: 300px;
+  border-radius: 10px;
+}
+.taxi-form details,
+.taxi-form summary {
+  background-color: transparent!important;
+  border: 2px solid #ffc107;
+}
+.taxi-form label:after {
+  display: none;
+}
+.taxi-form input[type="submit"] {
+  background-color: transparent;
+}
+.taxi-form input[type="submit"]:hover {
+  background: #ffc107!important;
+}
+.taxi-form .location-button,
+.taxi-form .taxi-submit {
+  display: flex;
+  vertical-align: middle;
+  margin-top: 10px;
+  justify-content: center;
+  width: 100%;
+}
+.taxi-form textarea.form-control {
+  height: 120px;
+}
+nav.navbar,
+footer.footer-dark {
+  background: #ffc107!important;
+}
